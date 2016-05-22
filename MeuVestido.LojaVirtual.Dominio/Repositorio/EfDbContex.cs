@@ -1,9 +1,7 @@
 ﻿using MeuVestido.LojaVirtual.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MeuVestido.LojaVirtual.Dominio.Properties;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace MeuVestido.LojaVirtual.Dominio.Repositorio
 {
@@ -11,10 +9,12 @@ namespace MeuVestido.LojaVirtual.Dominio.Repositorio
     {
         public DbSet<Produto> Produtos { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuider)
+        protected  virtual void OnModelCreating(DbModelBuilder modelBuider)
         {
             modelBuider.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuider.Entity<Produto>().ToTable("Produtos");        
+            modelBuider.Entity<Produto>().ToTable("Produtos");
         }
+      
 
+    }
 }
